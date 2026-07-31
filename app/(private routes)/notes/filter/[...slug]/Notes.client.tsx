@@ -2,7 +2,6 @@
 
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import css from './Notes.module.css';
-import { fetchNotes } from '@/lib/api';
 
 import { useState } from 'react';
 
@@ -14,6 +13,7 @@ import NoteList from '@/components/NoteList/NoteList';
 import Pagination from '@/components/Pagination/Pagination';
 import { NoteTag } from '@/types/note';
 import Link from 'next/link';
+import { fetchNotes } from '@/lib/api/clientApi';
 
 interface NotesClientProps {
   tag: NoteTag | undefined;

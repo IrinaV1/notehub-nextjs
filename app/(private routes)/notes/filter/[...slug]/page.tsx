@@ -6,9 +6,10 @@ import {
   QueryClient,
 } from '@tanstack/react-query';
 import NotesClient from './Notes.client';
-import { fetchNotes } from '@/lib/api';
+// import { fetchNotes } from '@/lib/api';
 import { NoteTag } from '@/types/note';
 import { Metadata } from 'next';
+import { fetchNotes } from '@/lib/api/serverApi';
 
 interface NotesProps {
   params: Promise<{
