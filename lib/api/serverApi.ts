@@ -47,7 +47,7 @@ export async function checkSession() {
     },
   });
 
-  return res.data.success;
+  return res;
 }
 
 export async function getMe(): Promise<User> {

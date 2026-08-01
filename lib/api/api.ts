@@ -18,35 +18,9 @@ export type RegisterRequest = {
   password: string;
   // userName: string;
 };
-// export async function fetchNotes(
-//   search: string = '',
-//   page: number = 1,
-//   perPage: number = 12,
-//   tag?: NoteTag
-// ): Promise<NotesHttpResponse> {
-//   const response = await axios.get<NotesHttpResponse>('/notes', {
-//     params: {
-//       search,
-//       page,
-//       perPage,
-//       tag,
-//     },
-//   });
 
-//   return response.data;
-// }
-
-// export async function createNote(note: NewNote): Promise<Note> {
-//   const response = await axios.post<Note>('/notes', note);
-//   return response.data;
-// }
-
-// export async function deleteNote(id: string): Promise<Note> {
-//   const response = await axios.delete<Note>(`/notes/${id}`);
-//   return response.data;
-// }
-
-// export async function fetchNoteById(id: string): Promise<Note> {
-//   const response = await axios.get<Note>(`/notes/${id}`);
-//   return response.data;
-// }
+export type LoginRequest = {
+  email: string;
+  password: string;
+ 
+};

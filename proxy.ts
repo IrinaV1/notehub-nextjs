@@ -1,8 +1,9 @@
 // proxy.ts
 import { NextRequest, NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
-import { parseCookie } from 'cookie';
+
 import { api } from './app/api/api';
+import { parseSetCookie } from 'cookie';
 const privateRoutes = ['/profile', '/notes'];
 const authRoutes = ['/sign-in', '/sign-up'];
 
@@ -32,25 +33,20 @@ export async function proxy(request: NextRequest) {
         const cookieArray = Array.isArray(setCookie) ? setCookie : [setCookie];
 
         for (const cookieString of cookieArray) {
-          const parsed = parseCookie(cookieString);
+          const parsed = parseSetCookie(cookieString);
 
           const options = {
-            expires: parsed.Expires ? new Date(parsed.Expires) : undefined,
-            path: parsed.Path,
-            maxAge: Number(parsed['Max-Age']),
+            expires: parsed.expires,
+            path: parsed.path,
+            maxAge: parsed.maxAge,
           };
-
-          if (parsed.accessToken !== undefined) {
-            cookieStore.set('accessToken', parsed.accessToken, options);
-          }
-
-          if (parsed.refreshToken !== undefined) {
-            cookieStore.set('refreshToken', parsed.refreshToken, options);
+          if (parsed.value) {
+            cookieStore.set(parsed.name, parsed.value, options);
           }
         }
 
         if (isAuthRoute) {
-          return NextResponse.redirect(new URL('/profile', request.url), {
+          return NextResponse.redirect(new URL('/', request.url), {
             headers: {
               Cookie: cookieStore.toString(),
             },
@@ -80,7 +76,7 @@ export async function proxy(request: NextRequest) {
     }
 
     if (isAuthRoute) {
-      return NextResponse.redirect(new URL('/profile', request.url));
+      return NextResponse.redirect(new URL('/', request.url));
     }
   }
 }

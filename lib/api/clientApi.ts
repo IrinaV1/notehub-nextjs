@@ -1,5 +1,5 @@
 import { NewNote, Note, NoteTag } from '@/types/note';
-import { API, NotesHttpResponse, RegisterRequest } from './api';
+import { API, LoginRequest, NotesHttpResponse, RegisterRequest } from './api';
 import { User } from '@/types/user';
 
 type UpdateUserRequest = {
@@ -43,12 +43,12 @@ export async function fetchNoteById(id: string): Promise<Note> {
   return response.data;
 }
 
-export async function register(data: RegisterRequest) {
+export async function register(data: RegisterRequest): Promise<User> {
   const response = await API.post<User>('/auth/register', data);
   return response.data;
 }
 
-export async function login(data: RegisterRequest) {
+export async function login(data: LoginRequest): Promise<User> {
   const response = await API.post<User>('/auth/login', data);
   return response.data;
 }
@@ -56,16 +56,16 @@ export async function login(data: RegisterRequest) {
 export async function logout(): Promise<void> {
   await API.post('/auth/logout');
 }
-export async function checkSession() {
+export async function checkSession(): Promise<boolean> {
   const response = await API.get<CheckSessionRequest>('/auth/session');
   return response.data.success;
 }
 
-export async function getMe() {
+export async function getMe(): Promise<User> {
   const response = await API.get<User>('/users/me');
   return response.data;
 }
-export async function updateMe(data: UpdateUserRequest) {
+export async function updateMe(data: UpdateUserRequest): Promise<User> {
   const response = await API.patch<User>('/users/me', data);
   return response.data;
 }
