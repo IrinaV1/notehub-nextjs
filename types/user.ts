@@ -3,3 +3,7 @@ export interface User {
   username: string;
   avatar: string;
 }
+export interface UpdateUserRequest {
+  email: string;
+  username: string;
+}
