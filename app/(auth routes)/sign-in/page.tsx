@@ -25,9 +25,12 @@ export default function SignInPage() {
 
     try {
       const user = await login({ email, password });
-
-      setUser(user);
-      router.push('/profile');
+      if (user) {
+        setUser(user);
+        router.push('/profile');
+      } else {
+        setError('Invalid email or password');
+      }
     } catch (error) {
       setError(
         (error as ApiError).response?.data?.error ??

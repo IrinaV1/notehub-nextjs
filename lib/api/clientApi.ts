@@ -1,6 +1,14 @@
 import { NewNote, Note, NoteTag } from '@/types/note';
 import { API, NotesHttpResponse, RegisterRequest } from './api';
-import { UpdateUserRequest, User } from '@/types/user';
+import { User } from '@/types/user';
+
+type UpdateUserRequest = {
+  email?: string;
+  username?: string;
+};
+type CheckSessionRequest = {
+  success: boolean;
+};
 
 export async function fetchNotes(
   search: string = '',
@@ -45,14 +53,12 @@ export async function login(data: RegisterRequest) {
   return response.data;
 }
 
-export async function logout() {
-  // const response =
-  await API.post<User>('/auth/logout');
-  // return response.data;
+export async function logout(): Promise<void> {
+  await API.post('/auth/logout');
 }
 export async function checkSession() {
-  const response = await API.get<User>('/auth/session');
-  return response.data;
+  const response = await API.get<CheckSessionRequest>('/auth/session');
+  return response.data.success;
 }
 
 export async function getMe() {

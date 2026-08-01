@@ -2,6 +2,11 @@ import { Note, NoteTag } from '@/types/note';
 import { API } from './api';
 import { NotesHttpResponse } from './api';
 import { cookies } from 'next/headers';
+import { User } from '@/types/user';
+
+type CheckSessionRequest = {
+  success: boolean;
+};
 
 export async function fetchNotes(
   search: string = '',
@@ -36,13 +41,21 @@ export async function fetchNoteById(id: string): Promise<Note> {
 }
 export async function checkSession() {
   const cookieStore = await cookies();
-  const res = await API.get('/auth/session', {
+  const res = await API.get<CheckSessionRequest>('/auth/session', {
     headers: {
       Cookie: cookieStore.toString(),
     },
   });
 
-  return res;
+  return res.data.success;
 }
 
-export async function getMe() {}
+export async function getMe(): Promise<User> {
+  const cookieStore = await cookies();
+  const res = await API.get<User>('/users/me', {
+    headers: {
+      Cookie: cookieStore.toString(),
+    },
+  });
+  return res.data;
+}
