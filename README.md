@@ -1,54 +1,14 @@
-NoteHub
+# NoteHub
 
-<p align="center">
-  <img src="public/notehub-logo.png" alt="NoteHub logo" width="100" />
-</p>
+### Your personal space for notes and ideas
 
-<h3 align="center">Your personal space for notes and ideas</h3>
+A personal note management application built with Next.js, React, and TypeScript.
 
-<p align="center">
-  A personal notes management application built with Next.js, React and TypeScript.
-</p>
+[**Live Demo**](https://09-auth-one-lake.vercel.app/) · [**GitHub Repository**](https://github.com/IrinaV1/notehub-nextjs)
 
-<p align="center">
-  <a href="https://09-auth-one-lake.vercel.app/">
-    <strong>Live Demo</strong>
-  </a>
-  &nbsp; · &nbsp;
-  <a href="https://github.com/IrinaV1/notehub-nextjs">
-    <strong>GitHub Repository</strong>
-  </a>
-</p>
+## Tech Stack
 
-Preview
-
-<!-- Add screenshots of your application to public/screenshots/ -->
-
-<p align="center">
-  <img src="public/screenshots/home.png" alt="NoteHub home page" width="800" />
-</p>
-
-<p align="center">
-  <em>NoteHub — personal notes management application.</em>
-</p>
-
-Features
-
-Authentication — user registration, login and logout.
-
-Protected Routes — access control for private pages.
-
-Notes Management — browse, create and delete personal notes.
-
-User Profile — view profile information and update your username.
-
-Session Management — check authentication status and maintain user sessions.
-
-Responsive UI — a user interface designed for different screen sizes.
-
-Tech Stack
-
-<p align="center">
+<p align="left">
   <a href="https://nextjs.org/">
     <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js" />
   </a>
@@ -69,109 +29,99 @@ Tech Stack
   </a>
 </p>
 
-Architecture Highlights
+## Overview
 
-Next.js App Router for file-based routing.
+NoteHub is a web application for managing personal notes. It provides user authentication, protected pages, profile management, and note management functionality.
 
-Server and Client Components.
+The project demonstrates practical experience with modern React development, Next.js App Router, API integration, and client-side state management.
 
-Separate API modules for client-side and server-side requests.
+## Features
 
-Axios instance for centralized HTTP configuration.
+- **Authentication** — user registration, sign-in, and sign-out.
+- **Protected Routes** — access control for private pages.
+- **Notes Management** — browse, create, and delete personal notes.
+- **User Profile** — view profile information and update the username.
+- **Session Management** — check authentication status and maintain user sessions.
+- **Responsive UI** — an interface designed for different screen sizes.
 
-Zustand for global authentication state.
+## Architecture Highlights
 
-Cookie-based session handling.
+- **Next.js App Router** for file-based routing.
+- **Server and Client Components** for separating server-side and client-side responsibilities.
+- **Separate API modules** for client-side and server-side requests.
+- **Axios instance** for centralized HTTP configuration.
+- **Zustand** for global authentication state.
+- **Cookie-based session handling** for authentication.
+- **Route protection using Next.js Proxy**.
+- **TypeScript** for type safety and maintainable code.
 
-Route protection using Next.js Proxy.
+## Getting Started
 
-TypeScript for type safety.
+### Prerequisites
 
-Getting Started
+- Node.js
+- npm
+- Access to the application's API
 
-Prerequisites
+### Installation
 
-Node.js
+1. Clone the repository:
 
-npm
+   ```bash
+   git clone https://github.com/IrinaV1/notehub-nextjs.git
+   ```
 
-Access to the application's API
+2. Navigate to the project directory:
 
-Installation
+   ```bash
+   cd notehub-nextjs
+   ```
 
-Clone the repository:
+3. Install dependencies:
 
-git clone https://github.com/IrinaV1/notehub-nextjs.git
+   ```bash
+   npm install
+   ```
 
-Navigate to the project directory:
+4. Create a `.env.local` file in the project root and configure the API URL:
 
-cd notehub-nextjs
+   ```env
+   NEXT_PUBLIC_API_URL=your_api_url
+   ```
 
-Install dependencies:
+   Replace `your_api_url` with the actual API URL required by the application.
 
-npm install
+5. Start the development server:
 
-Create a .env.local file in the project root and configure the required environment variables:
+   ```bash
+   npm run dev
+   ```
 
-NEXT_PUBLIC_API_URL=http://localhost:3000
+6. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-Use the correct API URL for your environment. Do not commit environment files containing secrets.
+## Future Improvements
 
-Start the development server:
+- Add search and filtering for notes.
+- Implement note editing and categorization.
+- Improve accessibility and responsive design.
+- Add automated tests.
+- Improve loading, empty, and error states.
 
-npm run dev
-
-Open http://localhost:3000 in your browser.
-
-Project Structure
-
-notehub-nextjs/
-├── app/
-│   ├── (auth routes)/
-│   │   ├── sign-in/
-│   │   └── sign-up/
-│   ├── (private routes)/
-│   │   ├── profile/
-│   │   └── notes/
-│   ├── layout.tsx
-│   └── page.tsx
-├── components/
-│   ├── AuthNavigation/
-│   └── AuthProvider/
-├── lib/
-│   ├── api/
-│   │   ├── api.ts
-│   │   ├── clientApi.ts
-│   │   └── serverApi.ts
-│   └── store/
-│       └── authStore.ts
-├── public/
-│   ├── notehub-logo.png
-│   └── screenshots/
-├── types/
-└── proxy.ts
-
-The structure above highlights the main application modules. Adjust it to match the actual repository.
-
-Live Demo
+## Live Demo
 
 Explore the deployed application:
 
-Open NoteHub
+[**Open NoteHub**](https://09-auth-one-lake.vercel.app/)
 
-Future Improvements
+## Author
 
-Search and filter notes.
+**Irina V.**
 
-Add note editing and categorization.
+[GitHub Profile](https://github.com/IrinaV1)
 
-Improve accessibility and responsive design.
+---
 
-Add automated tests.
+*Built as a personal project to practice modern frontend development with Next.js and TypeScript.*
 
-Author
 
-Irina V.
-
-GitHub: @IrinaV1
 
